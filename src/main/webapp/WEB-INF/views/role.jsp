@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="/static/common/common.jsp"%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/role.js"></script>
     <title>权限管理</title>
 </head>
 <body>

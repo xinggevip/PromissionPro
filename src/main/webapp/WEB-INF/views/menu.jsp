@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="/static/common/common.jsp"%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/menu.js"></script>
     <title>菜单管理</title>
 </head>
 <body>
