@@ -8,4 +8,6 @@ public interface EmployeeService {
     public PageListRes getEmployee();
     /* 保存员工 */
     public void saveEmployee(Employee employee);
+    /* 更新员工 */
+    public void updateEmployee(Employee employee);
 }

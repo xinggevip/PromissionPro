@@ -39,4 +39,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         int insert = employeeMapper.insert(employee);
 
     }
+
+    /* 更新员工 */
+    @Override
+    public void updateEmployee(Employee employee) {
+        employeeMapper.updateByPrimaryKey(employee);
+    }
 }

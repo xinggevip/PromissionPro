@@ -37,7 +37,7 @@
       email = #{email,jdbcType=VARCHAR},
       state = #{state,jdbcType=BIT},
       admin = #{admin,jdbcType=BIT},
-      dep_id = #{depId,jdbcType=BIGINT},
+      dep_id = #{department.id,jdbcType=BIGINT},
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

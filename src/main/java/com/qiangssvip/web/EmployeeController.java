@@ -16,6 +16,23 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    /* 更新员工 */
+    @RequestMapping("/updateEmployee")
+    @ResponseBody
+    public AjaxRes updateEmployee(Employee employee){
+        System.out.println(employee);
+        AjaxRes ajaxRes = new AjaxRes();
+        try {
+            employeeService.updateEmployee(employee);
+            ajaxRes.setMsg("更新成功");
+            ajaxRes.setSuccess(true);
+        }catch (Exception e){
+            ajaxRes.setMsg("更新失败");
+            ajaxRes.setSuccess(false);
+        }
+        return ajaxRes;
+    }
+
     /* 保存员工 */
     @RequestMapping("/saveEmployee")
     @ResponseBody
