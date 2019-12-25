@@ -26,7 +26,8 @@ public class Employee {
 
     private Boolean admin;
 
-    private Long depId;
+    /// private Long depId;
+    private Department department;
 
     private String password;
 

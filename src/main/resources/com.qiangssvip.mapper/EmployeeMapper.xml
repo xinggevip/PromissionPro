@@ -9,8 +9,12 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="BIT" />
     <result column="admin" property="admin" jdbcType="BIT" />
-    <result column="dep_id" property="depId" jdbcType="BIGINT" />
+    <!--<result column="dep_id" property="depId" jdbcType="BIGINT" />-->
     <result column="password" property="password" jdbcType="VARCHAR" />
+    <association property="department" javaType="com.qiangssvip.domain.Department" columnPrefix="d_">
+      <result column="id" property="id"/>
+      <result column="name" property="name"/>
+    </association>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from employee
@@ -42,7 +46,20 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, username, inputtime, tel, email, state, admin, dep_id, password
-    from employee
+    select
+    e.id,
+    e.username,
+    e.inputtime,
+    e.tel,
+    e.email,
+    e.state,
+    e.admin,
+    e.password,
+    d.id as d_id,
+    d.name as d_name
+
+    from employee as e
+    LEFT JOIN department as d
+    ON e.dep_id = d.id
   </select>
 </mapper>
