@@ -1,7 +1,6 @@
 $(function(){
-    alert("ghjkl");
     $("#dg").datagrid({
-        url:"",
+        url:"/employeeList",
         columns:[[
             {field:'username',title:'姓名',width:100,algin:'center'},
             {field:'inputtime',title:'入职时间',width:100,algin:'center'},
