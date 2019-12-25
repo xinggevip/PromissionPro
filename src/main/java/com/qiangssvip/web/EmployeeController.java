@@ -1,5 +1,7 @@
 package com.qiangssvip.web;
 
+import com.qiangssvip.domain.AjaxRes;
+import com.qiangssvip.domain.Employee;
 import com.qiangssvip.domain.PageListRes;
 import com.qiangssvip.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,25 @@ public class EmployeeController {
     /*注入业务层*/
     @Autowired
     private EmployeeService employeeService;
+
+    /* 保存员工 */
+    @RequestMapping("/saveEmployee")
+    @ResponseBody
+    public AjaxRes saveEmployee(Employee employee){
+        System.out.println(employee);
+        AjaxRes ajaxRes = new AjaxRes();
+        try {
+            employee.setState(true);
+            employeeService.saveEmployee(employee);
+            ajaxRes.setMsg("保存成功");
+            ajaxRes.setSuccess(true);
+        }catch (Exception e){
+            ajaxRes.setMsg("保存失败");
+            ajaxRes.setSuccess(false);
+        }
+
+        return ajaxRes;
+    }
 
     @RequestMapping("/employeeList")
     @ResponseBody

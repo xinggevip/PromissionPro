@@ -5,9 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Setter@Getter@ToString
-public class Department {
-    private Long id;
-
-    private String name;
-
+public class AjaxRes {
+    private String Msg;
+    private Boolean Success;
 }

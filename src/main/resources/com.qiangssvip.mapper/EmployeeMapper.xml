@@ -20,13 +20,14 @@
     delete from employee
     where id = #{id,jdbcType=BIGINT}
   </delete>
+  <!-- 保存员工 -->
   <insert id="insert" parameterType="com.qiangssvip.domain.Employee" >
     insert into employee (id, username, inputtime, 
       tel, email, state, admin, 
       dep_id, password)
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{inputtime,jdbcType=TIMESTAMP}, 
       #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{state,jdbcType=BIT}, #{admin,jdbcType=BIT}, 
-      #{depId,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR})
+      #{department.id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.qiangssvip.domain.Employee" >
     update employee

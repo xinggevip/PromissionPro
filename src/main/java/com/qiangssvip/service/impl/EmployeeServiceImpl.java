@@ -8,10 +8,12 @@ import com.qiangssvip.mapper.EmployeeMapper;
 import com.qiangssvip.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
@@ -28,5 +30,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         pageListRes.setRows(employees);
 
         return pageListRes;
+    }
+
+    /* 保存员工 */
+    @Override
+    public void saveEmployee(Employee employee) {
+
+        int insert = employeeMapper.insert(employee);
+
     }
 }
