@@ -16,6 +16,22 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    /* 接收离职操作请求 */
+    @RequestMapping("/updateState")
+    @ResponseBody
+    public AjaxRes updateState(Long id){
+        AjaxRes ajaxRes = new AjaxRes();
+        try {
+            employeeService.updateState(id);
+            ajaxRes.setMsg("更新成功");
+            ajaxRes.setSuccess(true);
+        }catch (Exception e){
+            ajaxRes.setMsg("更新失败");
+            ajaxRes.setSuccess(false);
+        }
+        return ajaxRes;
+    }
+
     /* 更新员工 */
     @RequestMapping("/updateEmployee")
     @ResponseBody

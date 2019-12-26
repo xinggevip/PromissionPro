@@ -10,4 +10,6 @@ public interface EmployeeService {
     public void saveEmployee(Employee employee);
     /* 更新员工 */
     public void updateEmployee(Employee employee);
+    /* 离职 */
+    public void updateState(Long id);
 }
