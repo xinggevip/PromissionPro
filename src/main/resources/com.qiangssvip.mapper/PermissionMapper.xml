@@ -31,4 +31,8 @@
     select pid, pname, presource
     from permission
   </select>
+  <!-- 根据角色查权限 -->
+    <select id="selectPermissionByRid" resultType="com.qiangssvip.domain.Permission">
+      SELECT * FROM permission WHERE pid in (SELECT pid FROM role_permission_rel WHERE rid = #{rid})
+    </select>
 </mapper>

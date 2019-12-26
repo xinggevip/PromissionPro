@@ -15,6 +15,14 @@ public class PermissionController {
     @Autowired
     private PermissionService permissionService;
 
+    /* 根据角色查权限 */
+    @RequestMapping("/getPermissionByRid")
+    @ResponseBody
+    public List<Permission> getPermissionByRid(Long rid){
+        List<Permission> permissionByRid = permissionService.getPermissionByRid(rid);
+        return permissionByRid;
+    }
+
     @RequestMapping("/permissionList")
     @ResponseBody
     public List<Permission> permissionList(){
