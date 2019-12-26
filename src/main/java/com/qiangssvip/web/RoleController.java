@@ -10,12 +10,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class RoleController {
 
     /* 注入业务层 */
     @Autowired
     private RoleService roleService;
+
+    /* 获取下拉框角色列表 */
+    @RequestMapping("/roleList")
+    @ResponseBody
+    public List<Role> roleList(){
+        List<Role> roles = roleService.roleList();
+        return roles;
+    }
 
     /* 删除角色 */
     @RequestMapping("/deleteRole")

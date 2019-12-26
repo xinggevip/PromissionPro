@@ -66,4 +66,11 @@ public class RoleServiceImpl implements RoleService {
         roleMapper.delPermissionRel(rid);
         roleMapper.deleteByPrimaryKey(rid);
     }
+
+    /* 获取下拉框角色列表 */
+    @Override
+    public List<Role> roleList() {
+        List<Role> roles = roleMapper.selectAll();
+        return roles;
+    }
 }

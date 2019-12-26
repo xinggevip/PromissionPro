@@ -4,6 +4,8 @@ import com.qiangssvip.domain.PageListRes;
 import com.qiangssvip.domain.QueryVo;
 import com.qiangssvip.domain.Role;
 
+import java.util.List;
+
 public interface RoleService {
     /* 查询角色列表 */
     public PageListRes getRoles(QueryVo vo);
@@ -13,4 +15,6 @@ public interface RoleService {
     void updateRole(Role role);
     /* 删除角色 */
     void deleteRole(Long rid);
+    /* 获取下拉框角色列表 */
+    List<Role> roleList();
 }
