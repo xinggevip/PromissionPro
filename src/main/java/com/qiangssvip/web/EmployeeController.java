@@ -3,6 +3,7 @@ package com.qiangssvip.web;
 import com.qiangssvip.domain.AjaxRes;
 import com.qiangssvip.domain.Employee;
 import com.qiangssvip.domain.PageListRes;
+import com.qiangssvip.domain.QueryVo;
 import com.qiangssvip.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,11 +69,13 @@ public class EmployeeController {
         return ajaxRes;
     }
 
+    /* 分页获取员工 */
     @RequestMapping("/employeeList")
     @ResponseBody
-    public PageListRes employeeList(){
+    public PageListRes employeeList(QueryVo vo){
+        System.out.println(vo);
         /*调用业务层查询员工*/
-        PageListRes employee = employeeService.getEmployee();
+        PageListRes employee = employeeService.getEmployee(vo);
         return employee;
     }
 

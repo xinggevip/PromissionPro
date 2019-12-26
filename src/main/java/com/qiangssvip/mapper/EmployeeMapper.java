@@ -1,6 +1,8 @@
 package com.qiangssvip.mapper;
 
 import com.qiangssvip.domain.Employee;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface EmployeeMapper {
@@ -10,7 +12,7 @@ public interface EmployeeMapper {
 
     Employee selectByPrimaryKey(Long id);
 
-    List<Employee> selectAll();
+    List<Employee> selectAll(@Param("keyword") String keyword);
 
     int updateByPrimaryKey(Employee record);
 

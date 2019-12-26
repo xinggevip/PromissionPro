@@ -50,7 +50,18 @@
     from employee
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+
+  <sql id="where_sql">
+    <where>
+      <if test="keyword != null and keyword != ''">
+        and e.username like  concat('%',#{keyword},'%')
+        or e.tel like concat('%',#{keyword},'%')
+        or e.email like concat('%',#{keyword},'%')
+      </if>
+    </where>
+  </sql>
+
+  <select id="selectAll" parameterType="String" resultMap="BaseResultMap" >
     select
     e.id,
     e.username,
@@ -66,5 +77,8 @@
     from employee as e
     LEFT JOIN department as d
     ON e.dep_id = d.id
+--     where e.username like '%${keyword}%'
+    <include refid="where_sql"/>
+    order by e.id
   </select>
 </mapper>
