@@ -59,4 +59,11 @@ public class RoleServiceImpl implements RoleService {
         }
 
     }
+
+    /* 删除角色 */
+    @Override
+    public void deleteRole(Long rid) {
+        roleMapper.delPermissionRel(rid);
+        roleMapper.deleteByPrimaryKey(rid);
+    }
 }

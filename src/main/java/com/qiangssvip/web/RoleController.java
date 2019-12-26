@@ -17,6 +17,22 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    /* 删除角色 */
+    @RequestMapping("/deleteRole")
+    @ResponseBody
+    public AjaxRes deleteRole(Long rid){
+        AjaxRes ajaxRes = new AjaxRes();
+        try {
+            roleService.deleteRole(rid);
+            ajaxRes.setMsg("删除成功");
+            ajaxRes.setSuccess(true);
+        }catch (Exception e){
+            ajaxRes.setMsg("删除失败");
+            ajaxRes.setSuccess(false);
+        }
+        return ajaxRes;
+    }
+
     /* 更新角色请求 */
     @RequestMapping("/updateRole")
     @ResponseBody

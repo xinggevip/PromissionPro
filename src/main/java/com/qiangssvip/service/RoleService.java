@@ -11,4 +11,6 @@ public interface RoleService {
     public void saveRole(Role role);
     /* 更新角色请求 */
     void updateRole(Role role);
+    /* 删除角色 */
+    void deleteRole(Long rid);
 }
