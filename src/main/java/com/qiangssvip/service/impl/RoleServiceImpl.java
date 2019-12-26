@@ -44,4 +44,19 @@ public class RoleServiceImpl implements RoleService {
             roleMapper.insertRoleAndPermissionRel(role.getRid(),permission.getPid());
         }
     }
+
+    /* 更新角色请求 */
+    @Override
+    public void updateRole(Role role) {
+
+        /* 1.删除角色与权限之间的关系 */
+        roleMapper.delPermissionRel(role.getRid());
+        /* 2.更新角色 */
+        roleMapper.updateByPrimaryKey(role);
+        /* 3.重新建立角色与权限之间的关系 */
+        for (Permission permission : role.getPermissions()) {
+            roleMapper.insertRoleAndPermissionRel(role.getRid(),permission.getPid());
+        }
+
+    }
 }

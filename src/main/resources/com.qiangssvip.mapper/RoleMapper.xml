@@ -10,6 +10,10 @@
     delete from role
     where rid = #{rid,jdbcType=BIGINT}
   </delete>
+  <!-- 删除角色与权限的关系 -->
+  <delete id="delPermissionRel">
+    delete from role_permission_rel where rid = #{rid}
+  </delete>
   <insert id="insert" parameterType="com.qiangssvip.domain.Role" useGeneratedKeys="true" keyProperty="rid">
     insert into role (rid, rnum, rname
       )

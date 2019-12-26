@@ -17,6 +17,22 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    /* 更新角色请求 */
+    @RequestMapping("/updateRole")
+    @ResponseBody
+    public AjaxRes updateRole(Role role){
+        AjaxRes ajaxRes = new AjaxRes();
+        try {
+            roleService.updateRole(role);
+            ajaxRes.setMsg("更新成功");
+            ajaxRes.setSuccess(true);
+        }catch (Exception e){
+            ajaxRes.setMsg("更新失败");
+            ajaxRes.setSuccess(false);
+        }
+        return ajaxRes;
+    }
+
     /* 接收 保存角色请求地址 */
     @RequestMapping("/saveRole")
     @ResponseBody

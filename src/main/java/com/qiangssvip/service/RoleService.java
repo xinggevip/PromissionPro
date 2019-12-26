@@ -9,4 +9,6 @@ public interface RoleService {
     public PageListRes getRoles(QueryVo vo);
     /* 保存角色 */
     public void saveRole(Role role);
+    /* 更新角色请求 */
+    void updateRole(Role role);
 }
