@@ -3,6 +3,7 @@ package com.qiangssvip.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.qiangssvip.domain.PageListRes;
+import com.qiangssvip.domain.Permission;
 import com.qiangssvip.domain.QueryVo;
 import com.qiangssvip.domain.Role;
 import com.qiangssvip.mapper.RoleMapper;
@@ -31,5 +32,16 @@ public class RoleServiceImpl implements RoleService {
         pageListRes.setTotal(page.getTotal());
         pageListRes.setRows(roles);
         return pageListRes;
+    }
+
+    /* 保存角色 保存角色与全拿先之间的关系 */
+    @Override
+    public void saveRole(Role role) {
+        /* 1.保存角色 */
+        roleMapper.insert(role);
+        /* 2.保存角色与全拿先之间的关系 */
+        for (Permission permission : role.getPermissions()) {
+            roleMapper.insertRoleAndPermissionRel(role.getRid(),permission.getPid());
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.qiangssvip.mapper;
 
 import com.qiangssvip.domain.Role;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface RoleMapper {
@@ -13,4 +15,6 @@ public interface RoleMapper {
     List<Role> selectAll();
 
     int updateByPrimaryKey(Role record);
+
+    int insertRoleAndPermissionRel(@Param("rid") Long rid, @Param("pid") Long pid);
 }
