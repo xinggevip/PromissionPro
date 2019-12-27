@@ -21,13 +21,16 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <!-- 保存员工 -->
-  <insert id="insert" parameterType="com.qiangssvip.domain.Employee" >
+  <insert id="insert" parameterType="com.qiangssvip.domain.Employee" useGeneratedKeys="true" keyProperty="id">
     insert into employee (id, username, inputtime, 
       tel, email, state, admin, 
       dep_id, password)
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{inputtime,jdbcType=TIMESTAMP}, 
       #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{state,jdbcType=BIT}, #{admin,jdbcType=BIT}, 
       #{department.id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertEmployeeAndRoleRel">
+    insert into employee_role_rel(eid,rid) values (#{id},#{rid})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.qiangssvip.domain.Employee" >
     update employee

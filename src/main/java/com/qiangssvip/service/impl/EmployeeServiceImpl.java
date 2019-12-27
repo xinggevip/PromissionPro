@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.qiangssvip.domain.Employee;
 import com.qiangssvip.domain.PageListRes;
 import com.qiangssvip.domain.QueryVo;
+import com.qiangssvip.domain.Role;
 import com.qiangssvip.mapper.EmployeeMapper;
 import com.qiangssvip.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void saveEmployee(Employee employee) {
 
-        int insert = employeeMapper.insert(employee);
+        /* 保存员工 */
+        employeeMapper.insert(employee);
+        /* 保存员工角色关系表 */
+        for (Role role : employee.getRoles()) {
+            employeeMapper.insertEmployeeAndRoleRel(employee.getId(),role.getRid());
+            System.out.println("插入关系记录");
+        }
 
     }
 

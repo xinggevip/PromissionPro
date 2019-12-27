@@ -54,6 +54,7 @@ public class EmployeeController {
     @RequestMapping("/saveEmployee")
     @ResponseBody
     public AjaxRes saveEmployee(Employee employee){
+        System.out.println("============================================================");
         System.out.println(employee);
         AjaxRes ajaxRes = new AjaxRes();
         try {
