@@ -19,4 +19,6 @@ public interface EmployeeMapper {
     int updateState(Long id);
 
     int insertEmployeeAndRoleRel(@Param("id") Long id, @Param("rid") Long rid);
+
+    int deleteRoleRel(Long id);
 }

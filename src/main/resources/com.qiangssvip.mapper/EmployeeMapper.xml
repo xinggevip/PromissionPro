@@ -20,7 +20,10 @@
     delete from employee
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <!-- 保存员工 -->
+    <delete id="deleteRoleRel">
+      delete from employee_role_rel where eid = #{id}
+    </delete>
+    <!-- 保存员工 -->
   <insert id="insert" parameterType="com.qiangssvip.domain.Employee" useGeneratedKeys="true" keyProperty="id">
     insert into employee (id, username, inputtime, 
       tel, email, state, admin, 

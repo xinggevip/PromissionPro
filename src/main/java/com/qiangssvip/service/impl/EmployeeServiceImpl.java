@@ -37,10 +37,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     /* 保存员工 */
     @Override
     public void saveEmployee(Employee employee) {
-
         /* 保存员工 */
         employeeMapper.insert(employee);
-        /* 保存员工角色关系表 */
+        /* 保存员工角色关系记录 */
         for (Role role : employee.getRoles()) {
             employeeMapper.insertEmployeeAndRoleRel(employee.getId(),role.getRid());
             System.out.println("插入关系记录");
@@ -51,7 +50,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     /* 更新员工 */
     @Override
     public void updateEmployee(Employee employee) {
+        /*  删除员工角色记录 */
+        employeeMapper.deleteRoleRel(employee.getId());
+        /* 更新员工 */
         employeeMapper.updateByPrimaryKey(employee);
+        /* 保存员工角色关系记录 */
+        for (Role role : employee.getRoles()) {
+            employeeMapper.insertEmployeeAndRoleRel(employee.getId(),role.getRid());
+            System.out.println("插入关系记录");
+        }
     }
 
     /* 离职 */
