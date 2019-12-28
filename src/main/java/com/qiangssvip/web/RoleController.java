@@ -19,6 +19,14 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    /* 根据用户id查询角色 */
+    @RequestMapping("/getRoleByEid")
+    @ResponseBody
+    public List<Long> getRoleByEid(Long id){
+        List<Long> roleByEid = roleService.getRoleByEid(id);
+        return roleByEid;
+    }
+
     /* 获取下拉框角色列表 */
     @RequestMapping("/roleList")
     @ResponseBody

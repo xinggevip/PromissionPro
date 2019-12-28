@@ -17,4 +17,6 @@ public interface RoleService {
     void deleteRole(Long rid);
     /* 获取下拉框角色列表 */
     List<Role> roleList();
+    /* 根据用户id查询角色 */
+    List<Long> getRoleByEid(Long id);
 }

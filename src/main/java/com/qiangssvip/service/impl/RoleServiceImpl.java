@@ -73,4 +73,11 @@ public class RoleServiceImpl implements RoleService {
         List<Role> roles = roleMapper.selectAll();
         return roles;
     }
+
+    /* 根据用户id查询角色 */
+    @Override
+    public List<Long> getRoleByEid(Long id) {
+        List<Long> roleWidthId = roleMapper.getRoleWidthId(id);
+        return roleWidthId;
+    }
 }
