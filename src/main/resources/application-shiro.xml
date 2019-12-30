@@ -19,7 +19,8 @@
 
     <!-- 配置shiro过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-
+        <!-- 配置登录认证的路径 -->
+        <property name="loginUrl" value="/login"/>
         <!--配置安全管理器-->
         <property name="securityManager" ref="securityManager"></property>
         <!-- 配置shiro过滤器pattern -->
